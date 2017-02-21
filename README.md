@@ -1,3 +1,5 @@
+This provides an fullScreen pop and push gesture for UINavigationController. 
+
 ## Features
 
 - [x] FullScreen pop gesture support
