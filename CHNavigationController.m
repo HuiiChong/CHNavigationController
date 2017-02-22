@@ -64,8 +64,8 @@ const CGFloat CHPushBorderlineDelta = 0.45;
 {
     CHNavigationController *_navigationController = (CHNavigationController *)self.navigationController;
     NSArray *_controllers = _navigationController.ch_viewControllers;
-    CHWrapViewController *_wrapController = (CHWrapViewController *)_controllers[_controllers.count-1];
-    if(![_wrapController didPopClick]){
+    UIViewController *_controller = _controllers[_controllers.count-1];
+    if(![_controller didPopClick]){
         return;
     }
     [self.navigationController popViewControllerAnimated:YES];
@@ -325,11 +325,11 @@ static NSValue *ch_tabBarRectValue;
     //根据左滑和右滑判断
     SEL action = NSSelectorFromString(@"handleNavigationTransition:");
     CGPoint translation = [gestureRecognizer translationInView:gestureRecognizer.view];
-    CHWrapViewController *_wrapController = (CHWrapViewController *)self.ch_viewControllers[self.ch_viewControllers.count-1];
-    if(!_wrapController.ch_gestureEnabled){
+    UIViewController *_controller = self.ch_viewControllers[self.ch_viewControllers.count-1];
+    if(!_controller.ch_gestureEnabled){
         return NO;
     }
-    if(_wrapController.ch_leftGestureEnabled){
+    if(_controller.ch_leftGestureEnabled){
         //左滑打开
         if(translation.x <= 0){
             //左滑
